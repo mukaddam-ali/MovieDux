@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import "./styles.css";
 import Header from "./Components/Header";
@@ -13,10 +12,10 @@ function App() {
   const [watchlist, setWatchlist] = useState([]);
 
   useEffect(() => {
-    fetch("movies.json")
+    fetch("/MovieDux/movies.json")
       .then((response) => response.json())
       .then((data) => setMovies(data));
-  });
+  }, []);
 
   const toggleWatchlist = (movieId) => {
     setWatchlist((prev) =>
@@ -30,7 +29,7 @@ function App() {
     <div className="App">
       <div className="container">
         <Header></Header>
-        <Router>
+        <Router basename="/MovieDux">
           <nav>
             <ul>
               <li>
